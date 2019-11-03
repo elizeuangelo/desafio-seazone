@@ -30,4 +30,4 @@ A tabela gerada na pasta leituras possui as informações que foram requisitadas
 
 ## Observações
 
-Meu primeiro script de scraping, confesso que ainda tenho muito a ler na biblioteca e tendo mais tempo o script ficaria muito melhor.
+Meu primeiro script de scraping, confesso que ainda tenho muito a ler na biblioteca e tendo mais tempo o script ficaria muito melhor. Testei algumas bibliotecas mas gostei da *Scrapy* pois ela pareceu ser muito rápida, fazendo várias requests em simultâneo.
