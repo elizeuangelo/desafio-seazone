@@ -30,20 +30,14 @@ class AirBNB(scrapy.Spider):
     name = 'airbnb'
     allowed_domains = ['www.airbnb.com.br']
     start_urls = ['http://www.airbnb.com.br']
-
-    def __init__(self):
-        '''
-        Quando o scrapy é iniciado ele cria o cabeçalho do CSV
-        '''
-        global filewriter
-        filewriter.writerow(['ID','RECEITA PREVISTA','PRECO MEDIO JAN','PRECO MEDIO FEV','PRECO MEDIO MAR','DISPO JAN','DISPO FEV','DISPO MAR'])
-
     def start_requests(self):
         '''
         Optei por inserir os cookies da sessão diretamente na URL para poupar tempo e porque não havia necessidade
         de alterá-los. Não tenho certeza como a AirBNB processa vários destes cookies, mas acredito que não
         seja problema deixá-los como estão.
         '''
+        global filewriter
+        filewriter.writerow(['ID','RECEITA PREVISTA','PRECO MEDIO JAN','PRECO MEDIO FEV','PRECO MEDIO MAR','DISPO JAN','DISPO FEV','DISPO MAR'])
         url = ('https://www.airbnb.com/api/v2/explore_tabs?_format=for_explore_search_web&auto_ib=true'
             '&client_session_id=1d2d36b5-50a2-4042-8ec1-dc66d8325018&currency=BRL'
             '&current_tab_id=home_tab&experiences_per_grid=20&fetch_filters=true&guidebooks_per_grid=20&has_zero_guest_treatment=true'
@@ -73,7 +67,6 @@ class AirBNB(scrapy.Spider):
         '''
         data = json.loads(response.body)
         size = min(len(data.get('explore_tabs')[0].get('sections')[0].get('listings')),busca-offset)
-        print(size)
         rooms = [data.get('explore_tabs')[0].get('sections')[0].get('listings')[n].get('listing')['id'] for n in range(0,size)]
         url = f'https://www.airbnb.com.br/api/v2/homes_pdp_availability_calendar?currency=BRL&key={chave_api}&locale=pt&month={hoje.month}&year={hoje.year}&count={prever_receita}'
         for n in rooms:
