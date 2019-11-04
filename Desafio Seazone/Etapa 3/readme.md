@@ -28,7 +28,7 @@ Pegando os 10 apartamentos com preços médios mais baratos para janeiro, notei 
 
 Com os dados em questão, cheguei a conclusão que um investimento bom para o mes de janeiro é o de id **28600926**, outro bom é o **21538493**.
 Repetindo a mesma análise para fevereiro, dentre os com disponibilidade temos que dois bons apartamentos são **28600926** e **30169499**.
-Repetindo para março: **28600926** (com preço extremamente discrepante com relação aos outros, mas parece orgânico) e **22629043**.
+Repetindo para março: **28600926** e **22629043**, ambos com preços extremamente discrepantes com relação aos anteriores, mas parecem orgânicos e possuem disponibilidade.
 
 ## Análise 2 - VivaReal
 
