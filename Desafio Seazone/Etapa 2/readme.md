@@ -14,7 +14,7 @@ Com o módulo instalado, agora é necessário checar se as configurações estã
 **filtros** representa as chaves de um dicionário dentro do script, que direciona a busca para uma vizinhança ou cidade específica. Apenas dois filtros estão disponíveis mas é
 bem fácil criar novos. *Filtros: jurere, jurere-internacional*
 
-Uma vez configurado, o script opera de maneira bem simples: basta executá-lo diretamente (*python airbnb.py*) enquanto estiver no diretório principal do script. O script cria um arquivo *csv* dentro da pasta leituras, no formato 'airbnb YYYY-mm-dd'. O script roda silenciosamente no background e pode demorar alguns segundos para ser concluído.
+Uma vez configurado, o script opera de maneira bem simples: basta executá-lo diretamente (*python vivareal.py*) enquanto estiver no diretório principal do script. O script cria um arquivo *csv* dentro da pasta leituras, no formato 'vivareal YYYY-mm-dd'. O script roda silenciosamente no background e pode demorar alguns segundos para ser concluído.
 
 ### Como ler os dados
 
