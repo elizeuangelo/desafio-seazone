@@ -18,7 +18,7 @@ Com o módulo instalado, agora é necessário checar se as configurações estã
 
 **quartos** indica a quantidade mínima de quartos que o local possui, para fins de exclusão da busca.
 
-**busca** indica o número de locais que serão buscados, em múltiplos de 50.
+**busca** indica o número máximo de locais que serão buscados.
 
 **previsao_receita** representa quantos meses será calculada a receita dos quartos que não estão mais acessíveis. Representa *meses duros*, não mede 180 dias.
 
@@ -26,7 +26,7 @@ Uma vez configurado, o script opera de maneira bem simples: basta executá-lo di
 
 ### Como ler os dados
 
-A tabela gerada na pasta leituras possui as informações que foram requisitadas *(ID-RECEITA-MEDIA JAN-MEDIA FEV-MEDIA MAR)* e mais algumas que achei interessantes, dado a proposta da etapa 3 de buscar bons investimentos *(A QUANTIDADE DE DIAS DISPONIVEIS EM CADA MES)*. Seria possível buscar muitas outras mais informações sobre os locais para aluguel (como a nota do quarto, as acomodações, reviews, etc) realizando requests extras, optei pelo formato CSV pois acredito que seria o mais genérico para leitura de dados.
+A tabela gerada na pasta leituras possui as informações que foram requisitadas *(ID-RECEITA-MEDIA JAN-MEDIA FEV-MEDIA MAR)* e mais algumas que achei interessantes dado a proposta da etapa 3 de buscar bons investimentos *(A QUANTIDADE DE DIAS DISPONIVEIS EM CADA MES)*. Seria possível buscar muitas outras mais informações sobre os locais para aluguel (como a nota do quarto, as acomodações, reviews, etc) realizando requests extras, optei pelo formato CSV pois acredito que seria o mais genérico para leitura de dados.
 
 ## Observações
 
