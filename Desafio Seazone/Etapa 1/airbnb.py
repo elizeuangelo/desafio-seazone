@@ -56,25 +56,26 @@ class AirBNB(scrapy.Spider):
             '&satori_version=1.1.9&screen_height=970&screen_size=large&screen_width=1588&search_by_map=true&search_type=unknown'
             '&selected_tab_id=home_tab&show_groupings=true&supports_for_you_v3=true'
             '&sw_lat=-27.454893278053465&sw_lng=-48.51461583213927&timezone_offset=-180&version=1.6.5&zoom=15')
-        yield scrapy.Request(url=url, callback=self.parse)
         # O sistema requisita 50 itens por vez a cada request para obter ids de locais para aluguel,
         # Foi feito assim pois as respostas chegam em tempos diferentes e depois que foi alterado para este jeito não ouveram
         # problemas neste sentido.
-        items_offset = 50
+        items_offset = 0
         while items_offset < busca:
             url2 = url+f'&items_offset={items_offset}'
             # Aqui são os primeiros requests para obtenção dos dados de página
             # Utilizamos a página https://www.airbnb.com.br/api/v2/ pois ela já vêm em json e sendo muito mais rápido o carregamento
-            yield scrapy.Request(url=url2, callback=self.parse)
+            yield scrapy.Request(url=url2, callback=self.parse, cb_kwargs={'offset':items_offset})
             items_offset += 50
 
-    def parse(self, response):
+    def parse(self, response, offset):
         '''
         A resposta do request pelos locais de aluguel é processada aqui, primeiro lendo o json e depois criando novas
         requests, uma para cada local pesquisado
         '''
         data = json.loads(response.body)
-        rooms = [data.get('explore_tabs')[0].get('sections')[0].get('listings')[n].get('listing')['id'] for n in range(0,50)]
+        size = min(len(data.get('explore_tabs')[0].get('sections')[0].get('listings')),busca-offset)
+        print(size)
+        rooms = [data.get('explore_tabs')[0].get('sections')[0].get('listings')[n].get('listing')['id'] for n in range(0,size)]
         url = f'https://www.airbnb.com.br/api/v2/homes_pdp_availability_calendar?currency=BRL&key={chave_api}&locale=pt&month={hoje.month}&year={hoje.year}&count={prever_receita}'
         for n in rooms:
             url2 = url+f'&listing_id={n}'
