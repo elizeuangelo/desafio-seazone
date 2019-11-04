@@ -11,6 +11,7 @@ Com o módulo instalado, agora é necessário checar se as configurações estã
 ### config.cfg
 
 **quartos** indica a quantidade mínima de quartos que o local possui, para fins de exclusão da busca.
+
 **filtros** representa as chaves de um dicionário dentro do script, que direciona a busca para uma vizinhança ou cidade específica. Apenas dois filtros estão disponíveis mas é
 bem fácil criar novos. *Filtros: jurere, jurere-internacional*
 
