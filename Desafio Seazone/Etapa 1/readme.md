@@ -26,7 +26,7 @@ Uma vez configurado, o script opera de maneira bem simples: basta executá-lo di
 
 ### Como ler os dados
 
-A tabela gerada na pasta leituras possui as informações que foram requisitadas *(ID-RECEITA-MEDIA JAN-MEDIA FEV-MEDIA MAR)* mas seria possível buscar muitas outras mais informações sobre os locais para aluguel (como a nota do quarto, as acomodações, reviews, etc), optei pelo formato CSV pois acredito que seria o mais genérico para leitura de dados.
+A tabela gerada na pasta leituras possui as informações que foram requisitadas *(ID-RECEITA-MEDIA JAN-MEDIA FEV-MEDIA MAR)* e mais algumas que achei interessantes, dado a proposta da etapa 3 de buscar bons investimentos *(A QUANTIDADE DE DIAS DISPONIVEIS EM CADA MES)*. Seria possível buscar muitas outras mais informações sobre os locais para aluguel (como a nota do quarto, as acomodações, reviews, etc) realizando requests extras, optei pelo formato CSV pois acredito que seria o mais genérico para leitura de dados.
 
 ## Observações
 
