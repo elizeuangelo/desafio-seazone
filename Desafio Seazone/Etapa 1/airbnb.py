@@ -33,8 +33,7 @@ class AirBNB(scrapy.Spider):
 
     def __init__(self):
         '''
-        Quando o scrapy é iniciado ele logo abre o arquivo para criar o csv, como as responses chegam em
-        períodos desordenados foi necessário já iniciá-lo de antemão
+        Quando o scrapy é iniciado ele cria o cabeçalho do CSV
         '''
         global filewriter
         filewriter.writerow(['ID','RECEITA PREVISTA','PRECO MEDIO JAN','PRECO MEDIO FEV','PRECO MEDIO MAR','DISPO JAN','DISPO FEV','DISPO MAR'])
