@@ -25,7 +25,6 @@ prever_receita = int(config['DEFAULT']['previsao_receita'])
 
 # Uma variável global, a data de hoje
 hoje = datetime.date.today()
-csv_file = open(f'leituras/airbnb {hoje.isoformat()}.csv','w',newline='',encoding='utf-8')
 
 class AirBNB(scrapy.Spider):
     name = 'airbnb'
@@ -37,8 +36,8 @@ class AirBNB(scrapy.Spider):
         Quando o scrapy é iniciado ele logo abre o arquivo para criar o csv, como as responses chegam em
         períodos desordenados foi necessário já iniciá-lo de antemão
         '''
-        filewriter = csv.writer(csv_file,delimiter='\t',quotechar='|',quoting=csv.QUOTE_MINIMAL)
-        filewriter.writerow(['ID','RECEITA PREVISTA','PRECO MEDIO JAN','PRECO MEDIO FEV','PRECO MEDIO MAR'])
+        global filewriter
+        filewriter.writerow(['ID','RECEITA PREVISTA','PRECO MEDIO JAN','PRECO MEDIO FEV','PRECO MEDIO MAR','DISPO JAN','DISPO FEV','DISPO MAR'])
 
     def start_requests(self):
         '''
@@ -91,6 +90,7 @@ class AirBNB(scrapy.Spider):
         Utilizei listas ao invés de numpy porque o programa já é rápido e não são tantas
         informações para processar.
         '''
+        global filewriter
         data = json.loads(response.body)
         dias = []
         disponibilidade = []
@@ -110,8 +110,10 @@ class AirBNB(scrapy.Spider):
         preco_medio_jan = sum([janeiro[x]*preco[x]/sum(janeiro) for x in range(len(dias))])
         preco_medio_fev = sum([fevereiro[x]*preco[x]/sum(fevereiro) for x in range(len(dias))])
         preco_medio_mar = sum([marco[x]*preco[x]/sum(marco) for x in range(len(dias))])
-        filewriter = csv.writer(csv_file,delimiter='\t',quotechar='|',quoting=csv.QUOTE_MINIMAL)
-        filewriter.writerow([room,receita,preco_medio_jan,preco_medio_fev,preco_medio_mar])
+        dispon_jan = sum([disponibilidade[x]*janeiro[x] for x in range(len(dias))])
+        dispon_fev = sum([disponibilidade[x]*fevereiro[x] for x in range(len(dias))])
+        dispon_mar = sum([disponibilidade[x]*marco[x] for x in range(len(dias))])
+        filewriter.writerow([room,receita,preco_medio_jan,preco_medio_fev,preco_medio_mar,dispon_jan,dispon_fev,dispon_mar])
 
 c = CrawlerProcess({
     '''
@@ -120,6 +122,8 @@ c = CrawlerProcess({
     'USER_AGENT': 'Mozilla/5.0', 
     'LOG_ENABLED': False  
 })
+csv_file = open(f'leituras/airbnb {hoje.isoformat()}.csv','w',newline='',encoding='utf-8')
+filewriter = csv.writer(csv_file,delimiter='\t',quotechar='|',quoting=csv.QUOTE_MINIMAL)
 c.crawl(AirBNB)
 print('Programa iniciado..')
 c.start()
