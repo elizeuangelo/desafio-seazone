@@ -26,9 +26,11 @@ Também descobri que certas pessoas não alugam com regularidade os apartamentos
 
 Pegando os 10 apartamentos com preços médios mais baratos para janeiro, notei que eles variam entre *R$ 220.00* e *R$ 350.00*. Avaliando a disponibilidade do mês de janeiro, escolhi entre aqueles apartamentos com disponibilidade maior que zero.
 
-Com os dados em questão, cheguei a conclusão que um investimento bom para o mes de janeiro é o de id **28600926**, outro bom é o **21538493**.
-Repetindo a mesma análise para fevereiro, dentre os com disponibilidade temos que dois bons apartamentos são **28600926** e **30169499**.
-Repetindo para março: **28600926** e **22629043**, ambos com preços extremamente discrepantes com relação aos anteriores, mas parecem orgânicos e possuem disponibilidade.
+Com os dados em questão, cheguei a conclusão que um investimento bom para o mes de janeiro é o de id **28600926** *(preco medio 220 e 8 dias disponíveis)*, outro bom seria **21538493** *(preco medio 274 e 8 dias disponíveis)*.
+
+Repetindo a mesma análise para fevereiro, dentre os com disponibilidade temos que dois bons apartamentos são **28600926** *(preco medio 289 e 17 dias disponíveis)* e **30169499** *(preco medio 290 e 18 dias disponíveis)*. Existiam outros com preços melhores mas sem disponibilidade.
+
+Repetindo para março: **28600926** *(preco medio 132 e 8 dias disponíveis)* e **22629043** *(preco medio 150 e 25 dias disponíveis)*, ambos com preços extremamente discrepantes com relação aos anteriores, mas parecem orgânicos e possuem disponibilidade.
 
 ## Análise 2 - VivaReal
 
