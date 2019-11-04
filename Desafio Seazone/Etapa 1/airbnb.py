@@ -67,6 +67,7 @@ class AirBNB(scrapy.Spider):
         '''
         data = json.loads(response.body)
         size = min(len(data.get('explore_tabs')[0].get('sections')[0].get('listings')),busca-offset)
+        print(f'Lendo os items: {offset+1} - {offset+size}')
         rooms = [data.get('explore_tabs')[0].get('sections')[0].get('listings')[n].get('listing')['id'] for n in range(0,size)]
         url = f'https://www.airbnb.com.br/api/v2/homes_pdp_availability_calendar?currency=BRL&key={chave_api}&locale=pt&month={hoje.month}&year={hoje.year}&count={prever_receita}'
         for n in rooms:
@@ -100,9 +101,9 @@ class AirBNB(scrapy.Spider):
         janeiro = [(x>datetime.date(2019,12,31) and x<datetime.date(2020,2,1)) for x in dias]
         fevereiro = [(x>datetime.date(2020,1,31) and x<datetime.date(2020,3,1)) for x in dias]
         marco = [(x>datetime.date(2020,2,29) and x<datetime.date(2020,4,1)) for x in dias]
-        preco_medio_jan = sum([janeiro[x]*preco[x]/sum(janeiro) for x in range(len(dias))])
-        preco_medio_fev = sum([fevereiro[x]*preco[x]/sum(fevereiro) for x in range(len(dias))])
-        preco_medio_mar = sum([marco[x]*preco[x]/sum(marco) for x in range(len(dias))])
+        preco_medio_jan = round(sum([janeiro[x]*preco[x]/sum(janeiro) for x in range(len(dias))]),2)
+        preco_medio_fev = round(sum([fevereiro[x]*preco[x]/sum(fevereiro) for x in range(len(dias))]),2)
+        preco_medio_mar = round(sum([marco[x]*preco[x]/sum(marco) for x in range(len(dias))]),2)
         dispon_jan = sum([disponibilidade[x]*janeiro[x] for x in range(len(dias))])
         dispon_fev = sum([disponibilidade[x]*fevereiro[x] for x in range(len(dias))])
         dispon_mar = sum([disponibilidade[x]*marco[x] for x in range(len(dias))])
@@ -118,7 +119,7 @@ c = CrawlerProcess({
 csv_file = open(f'leituras/airbnb {hoje.isoformat()}.csv','w',newline='',encoding='utf-8')
 filewriter = csv.writer(csv_file,delimiter='\t',quotechar='|',quoting=csv.QUOTE_MINIMAL)
 c.crawl(AirBNB)
-print('Programa iniciado..')
+print('Programa iniciado..\nLocal:',local)
 c.start()
 csv_file.close()
 with open(f'leituras/airbnb {hoje.isoformat()}.csv',"r",encoding='utf-8') as csv_file:
