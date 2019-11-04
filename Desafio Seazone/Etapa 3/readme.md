@@ -11,25 +11,26 @@ de ambos os portais, especialmente o AirBNB que disponibiliza reviews e opiniõe
 
 Dito isso, vamos aos resultados!
 
-## Análise 1
+## Análise 1 - AirBNB
 
 Carreguei os dados em csv da AirBNB e os plotei no pandas. A primeira coisa que me chamou a atenção foi o desvio padrão dos preços
 e que cerca de 90% dos apartamentos estão com preço abaixo da média.
 
 Com o foco em obter o apartamento que seja o melhor investimento decidi imediatamente nesta primeira análise em ir para uma abordagem financeira:
-com foco nos três meses de análise *(jan-fev-mar)* minha intuição disse que os apartamentos com melhor custo benefício seriam os mais procurados, e focando
-apenas nos dados que coletamos, decidi dividir a receita dos próximos 6 meses pela média de preços.
+com foco nos três meses de análise *(jan-fev-mar)* minha intuição disse que os apartamentos com melhor custo benefício seriam os mais procurados, e focando apenas nos dados que coletamos, decidi dividir a receita dos próximos 6 meses pela média de preços de cada um destes meses.
 Esta nova coluna revelou que alguns apartamentos estavam com valores desproporcionalmente superiores nesta relação receita/preco medio,
-isso me chamou a atenção, no sentido que poderia haver algum problema com a previsão da receita. Investigando descobri que alguns apartamentos
-estavam com preços errados vindos da AirBNB (como alugueis diários de 100 mil reais), possivelmente algum erro cadastral do locador.
-Também descobri que certas pessoas não alugam com regularidade os apartamentos, que possuiam discrepâncias muito grandes entre o valor *padrão* (não praticado) e o valor real nos dias em que a pessoa disponibilizava o apartamento. Filtrei as discrepâncias e refiz a análise, desta vez filtrando também pelo preço médio para o mês.
+isso me chamou a atenção, no sentido que poderia haver algum problema com a previsão da receita. Investigando descobri que alguns apartamentos estavam com preços errados vindos da AirBNB (como alugueis diários de 100 mil reais), possivelmente algum erro cadastral do locador.
+Também descobri que certas pessoas não alugam com regularidade os apartamentos, que possuiam discrepâncias muito grandes entre o valor *padrão* (não praticado) e o valor real nos dias em que a pessoa disponibilizava o apartamento, como a previsão foi dos 6 próximos meses, apartamentos *fechados* possuíam receitas altas. Notando que a previsão da receita não é um atributo muito confiável, parti para uma análise de preços médios mês a mês, usando a relação apenas como um comentário de 'nota'.
 
-Eu gostaria de pegar apartamentos com preço máximo de 300 reais, sendo assim e usando a relação como 'nota'.
+### Resultados
 
-Com os dados em questão, cheguei a conclusão que um investimento bom para o mes de março é o de id **28600926**, enquanto outro bom para o mês de fevereiro é o **30169499**.
-Existiam outros melhores mas nenhum com vagas, aprimorando o scrapy seria possível prever tudo isto.
+Pegando os 10 apartamentos com preços médios mais baratos para janeiro, notei que eles variam entre *R$ 220.00* e *R$ 350.00*. Avaliando a disponibilidade do mês de janeiro, escolhi entre aqueles apartamentos com disponibilidade maior que zero.
 
-## Análise 2
+Com os dados em questão, cheguei a conclusão que um investimento bom para o mes de janeiro é o de id **28600926**, outro bom é o **21538493**.
+Repetindo a mesma análise para fevereiro, dentre os com disponibilidade temos que dois bons apartamentos são **28600926** e **30169499**.
+Repetindo para março: **28600926** (com preço extremamente discrepante com relação aos outros, mas parece orgânico) e **22629043**.
+
+## Análise 2 - VivaReal
 
 Desta vez decidi estudar os dados da VivaReal e começar utilizando uma abordagem diferente, como colhi dados diversos decidi brincar com eles e fazer uma regresão linear para ver se tipo de local, andar, quartos, e a area util poderiam ser utilizadas como previsoras do valor dos apartamentos. Após limpar os dados, retirando apartamentos com dados faltantes e com valores claramente errados, fiz uma regressão linear para prever o preco e criei 2 colunas na tabela: uma dividindo a previsao pelo preco diario (demonstrando quanto cada real do preco cobrado vale de acordo com a previsao), e outra diminuindo a previsao pelo preco diario (demonstrando o lucro total ao alugar aquele apartamento).
 
