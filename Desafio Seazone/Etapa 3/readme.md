@@ -34,7 +34,7 @@ Repetindo para março: **28600926** *(preco medio 132 e 8 dias disponíveis)* e 
 
 ## Análise 2 - VivaReal
 
-Desta vez decidi estudar os dados da VivaReal e começar utilizando uma abordagem diferente, como colhi dados diversos decidi brincar com eles e fazer uma regresão linear para ver se tipo de local, andar, quartos, e a area util poderiam ser utilizadas como previsoras do valor dos apartamentos. Após limpar os dados, retirando apartamentos com dados faltantes e com valores claramente errados, fiz uma regressão linear para prever o preco e criei 2 colunas na tabela: uma dividindo a previsao pelo preco diario (demonstrando quanto cada real do preco cobrado vale de acordo com a previsao), e outra diminuindo a previsao pelo preco diario (demonstrando o lucro total ao alugar aquele apartamento).
+Desta vez decidi estudar os dados da VivaReal e começar utilizando uma abordagem diferente, como colhi dados diversos decidi brincar com eles e fazer uma regressão linear para ver se tipo de local, andar, quartos, e a area util poderiam ser utilizadas como previsoras do valor dos apartamentos. Após limpar os dados, retirando apartamentos com dados faltantes e com valores claramente errados, fiz uma regressão linear para prever o preco e criei 2 colunas na tabela: uma dividindo a previsao pelo preco diario (demonstrando quanto cada real do preco cobrado vale de acordo com a previsao), e outra diminuindo a previsao pelo preco diario (demonstrando o lucro total ao alugar aquele apartamento).
 
 Analisando o gráfico de resíduos logo vejo que o modelo de regressão linear não é perfeito para tarefa em questão, mas parece uma boa estimativa.
 
