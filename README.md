@@ -6,4 +6,4 @@ Cada etapa foi feita em uma pasta em separado para facilitar a organização, a 
 
 # Web Scraping
 
-This repository is an attempt at web scraping AirBnB and Viva Real websites, the code works as of 12/11.
+This repository is an attempt at web scraping AirBnB and Viva Real websites, the code works as of 12/11/19.
