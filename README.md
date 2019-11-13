@@ -1,6 +1,6 @@
 # Scraping dos sites AirBnB e VivaReal
 
-Utilizando técnicas de scraping, retiro informações dos portais da AirBnB e VivaReal. Funciona da data 13/11/19.
+Utilizando técnicas de scraping, retiro informações dos portais da AirBnB e VivaReal, funciona da data 13/11/19.
 
 # Web Scraping
 
